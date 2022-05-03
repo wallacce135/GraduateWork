@@ -1,0 +1,12 @@
+.footer{
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    margin-top: 52px;
+    width: inherit;
+    box-sizing: border-box;
+    
+}

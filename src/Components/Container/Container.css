@@ -1,0 +1,19 @@
+.image{
+    width: inherit;
+    height: 200px;
+    background-color:#C4C4C4;
+    content: "";
+    border-radius: 8px;
+}
+.container label{
+    font-family:'Gilroy-Bold';
+    font-size: 20px;
+    display: block;
+    margin-top: 8px;
+}
+
+.tip{
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 24px;
+}

@@ -1,0 +1,41 @@
+.tip{
+    height: fit-content;
+    padding: 24px 24px 48px 24px;
+}
+
+.tip_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.icon{
+    background: #FFD464;
+}
+.tip_header h2{
+    margin-left: 8px;
+    font-family: 'Gilroy-Bold';
+    font-size: 24px;
+}
+
+.tip_header .icon{
+    width: 32px;
+    height: 32px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.mainBlock_title{
+    margin-top: 32px;
+    font-family: 'Gilroy-Bold';
+    font-size: 32px;
+}
+.mainBlock_text{
+    margin-top: 16px;
+    font-family: 'Gilroy';
+    font-size: 20px;
+}

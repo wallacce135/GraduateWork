@@ -1,0 +1,26 @@
+.article{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-top: 85px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.showMoreBtn{
+    background: transparent;
+    outline: none;
+    padding: 16px 0;
+    border: 1.5px solid black;
+    border-radius: 8px;
+    font-family: 'Gilroy';
+    font-size: 16px;
+    margin-top: 21px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    cursor: pointer;
+}

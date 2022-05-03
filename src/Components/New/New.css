@@ -1,0 +1,14 @@
+.New{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    outline: none;
+    border: 0;
+}
+
+.New > input:nth-child(1){
+    font-family: 'Gilroy-Bold';
+    font-size: 64px;
+}

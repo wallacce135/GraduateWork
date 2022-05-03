@@ -1,0 +1,34 @@
+.textarea {
+    box-sizing: border-box;
+    width: calc(100% - 48px + 16px);
+    min-height: 52px;
+    display: contents;
+}
+.textarea__input {
+    line-height: 16px;
+    padding: 16px;
+    overflow: hidden;
+    border-radius: 8px;
+    resize: none;
+    background: #F8F8F8;
+    font-family: 'Gilroy';
+    font-size: 24px;
+    border: none;
+    width: inherit;
+}
+/* .textarea__input::-webkit-scrollbar{
+    display: none;
+} */
+
+.textarea__input:focus {
+    outline: none;
+}
+
+.textarea__label {
+    display: block;
+    margin: 16px 0;
+}
+
+.textarea__input:invalid {
+    outline: 2px solid #EE7777;
+}

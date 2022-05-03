@@ -1,0 +1,77 @@
+.header{
+    width: 100%;
+    height: 88px;
+    background: white;
+    display: grid;
+    grid-template-columns: "1fr 1fr 4fr";
+    grid-template-areas: 'logo search btns btns btns';
+    align-items: center;
+}
+
+.header h1 {
+    font-family: 'Gilroy-Bold';
+    font-size: 36px;
+    color: #F15025;
+    line-height: 28px;
+    grid-area: logo;
+}
+/* .header > div{
+    display: flex;
+    align-items: center;
+}
+.header > div*{
+    align-self: center;
+} */
+.search{
+    width: 180px;
+    padding: 8px;
+    background: #E6E8E6;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    grid-area: search;
+}
+
+.search img{
+    margin-right: 12px;
+}
+
+.search input{
+    background: none;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    width: 100%;
+    font-family: 'Gilroy-Bold';
+    font-size: 20px;
+} 
+.search input::placeholder{
+    color: #A2A3A2;
+}
+
+.navButtons{
+    grid-area: btns;
+    align-items: center;
+    text-align: right;
+    /* height: 41px; */
+}
+
+.navButtons a{
+    text-decoration: none;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    color: black;
+}
+
+#regBtn{
+    background-color: #F9BEAE;
+    color: #C16C55;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+#logBtn{
+    margin-right: 16px;
+}
+#logo{
+    text-decoration: none;
+}
