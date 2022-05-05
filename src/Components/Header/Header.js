@@ -16,7 +16,7 @@ function Header(){
 
             <div className="navButtons">
             <Link id="logBtn" to="">войти</Link>
-            <Link id="regBtn" to="">регистрация</Link>
+            <Link id="regBtn" to="">регистрация </Link>
             </div>
         </div>
     )
