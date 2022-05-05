@@ -1,6 +1,7 @@
 .New{
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 input{
@@ -11,4 +12,18 @@ input{
 .New > input:nth-child(1){
     font-family: 'Gilroy-Bold';
     font-size: 64px;
+}
+#addImg, #Publish{
+    background: transparent;
+    outline: none;
+    padding: 16px 15px;
+    border: 1.5px solid black;
+    border-radius: 8px;
+    font-family: 'Gilroy';
+    font-size: 16px;
+    margin-top: 21px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    cursor: pointer;
+    /* margin-right: 15px; */
 }

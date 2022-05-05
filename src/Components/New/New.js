@@ -11,6 +11,10 @@ function New(){
         <div className="New">
             <input placeholder="Заголовок" />
             <TextareaContainer handler={(e) => changeValue(e.target.value)} value={value}/>
+            <div className="buttons">
+                <button id="addImg">Установить картинку</button>
+                <button id="Publish">Опубликовать</button>
+            </div>
         </div>
     )
 }

@@ -1,12 +1,13 @@
 import React from "react";
-import './Header.css'
-import searchImg from '../../assets/search-img.svg'
+import './Header.css';
+import searchImg from '../../assets/search-img.svg';
+import {Link} from 'react-router-dom';
 
 
 function Header(){
     return(
         <div className="header">
-            <a href="/" id="logo"><h1>проф<br/>ресурс</h1></a>
+            <Link to="/" id="logo"><h1>проф<br/>ресурс</h1></Link>
 
             <div className="search">
                 <img src={searchImg}/>
@@ -14,8 +15,8 @@ function Header(){
             </div>
 
             <div className="navButtons">
-            <a id="logBtn" href="">войти</a>
-            <a id="regBtn" href="">регистрация</a>
+            <Link id="logBtn" to="">войти</Link>
+            <Link id="regBtn" to="">регистрация</Link>
             </div>
         </div>
     )
