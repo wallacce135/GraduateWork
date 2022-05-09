@@ -14,3 +14,6 @@
   width: 1200px;
   margin: auto;
 }
+body{
+  overflow-y: scroll;
+}
