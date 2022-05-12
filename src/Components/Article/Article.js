@@ -13,8 +13,6 @@ const getData = (setArticles) =>{
     axios.get('http://localhost:8080').then(res =>{
         setArticles(res.data);
     })
-
-    
 }
 
 const getTip = (getTip) =>{
@@ -24,9 +22,11 @@ const getTip = (getTip) =>{
 }
 
 function Article(props){
-
+    
+    
     useEffect(() => getData(props.setArticles), [props.articles.length]);
     useEffect(()=> getTip(props.getTip), [props.tip.tip_id]);
+
     
     return(
         <div className="article">

@@ -7,16 +7,17 @@ import { Provider } from 'react-redux';
 import { store } from './App(Redux)/store';
 
 import { BrowserRouter } from 'react-router-dom';
+import { Cookies, CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+    <CookiesProvider>
+      <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+      </BrowserRouter>
+    </CookiesProvider>
 );
 
 

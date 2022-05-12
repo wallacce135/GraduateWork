@@ -4,7 +4,7 @@ const init = {
     articles: [],
     tip: {
         tip_id: null
-    }
+    },
 }
 
 export function ArticleReducer(state = init, action){
@@ -14,7 +14,7 @@ export function ArticleReducer(state = init, action){
         case actionTypes.GET_TIP:
             return {...state, tip: {...action.tip}}
         case actionTypes.NEW_ARTICLE:
-            return state.push(action.payload)
+            return {...state, ...state.articles.push(action.payload)}
         default:
             return state
     }

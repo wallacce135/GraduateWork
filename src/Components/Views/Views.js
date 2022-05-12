@@ -1,10 +1,12 @@
 import React from "react";
-
+import './Views.css'
 
 function Views(){
     return(
         <div className="Views">
-            Привет мир, я обзоры
+            <div>
+                Это будующая страница обзоров. На данный момент находиться в разработке.
+            </div>
         </div>
     )
 }

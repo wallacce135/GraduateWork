@@ -4,7 +4,8 @@ import searchImg from '../../assets/search-img.svg';
 import {Link} from 'react-router-dom';
 
 
-function Header(){
+function Header(props){
+    console.log(props);
     return(
         <div className="header">
             <Link to="/" id="logo"><h1>проф<br/>ресурс</h1></Link>
@@ -14,10 +15,12 @@ function Header(){
                 <input placeholder="найти"/>
             </div>
 
+            {props.authorized ? 
             <div className="navButtons">
-            <Link id="logBtn" to="">войти</Link>
-            <Link id="regBtn" to="">регистрация </Link>
+                <Link id="logBtn" to="/login">войти</Link>
+                <Link id="regBtn" to="/registration">регистрация </Link>
             </div>
+            : <div></div>}
         </div>
     )
 }

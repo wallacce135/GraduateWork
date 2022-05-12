@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-input{
+.New input{
     outline: none;
     border: 0;
 }
@@ -25,5 +25,5 @@ input{
     grid-column-start: 1;
     grid-column-end: 3;
     cursor: pointer;
-    /* margin-right: 15px; */
+    margin-right: 15px;
 }

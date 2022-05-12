@@ -6,14 +6,9 @@ import { setNewArticleActionCreator } from "../Article/ArticleReducer";
 import axios from "axios";
 
 
-function addNewArticle (titleValue, textValue){
+function addNew(payload){
     
-    let payload = {
-        titleText: titleValue,
-        textValue: textValue
-    }
-
-    addNewArticle(payload);
+    console.log(payload);
 
     // axios.post("http://localhost:8080/uploadNewArticle", {
         
@@ -28,7 +23,7 @@ function New(props){
     const [textValue, changeTextValue] = useState("");
     const [titleValue, changeTitleValue] = useState("");
 
-    console.log(props)
+    // console.log(props)
 
     return(
         <div className="New">
@@ -37,7 +32,7 @@ function New(props){
             <textarea id="text" onChange={e => changeTextValue(e.target.value)}></textarea>
             <div className="buttons">
                 <button id="addImg">Установить картинку</button>
-                <button id="Publish" onClick={() => addNewArticle(titleValue, textValue)}>Опубликовать</button>
+                <button id="Publish" onClick={() => (props.AddNewArticle({payload: {artTitle: titleValue, artText: textValue}}))}>Опубликовать</button>
             </div>
         </div>
     )
@@ -46,7 +41,8 @@ function New(props){
 
 function MapStateToProps(state){
     return{
-        articles: state.Articles.payload
+        articles: state.Articles.articles,
+        state: state
     }
 }
 
