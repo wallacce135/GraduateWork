@@ -1,28 +1,63 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import './Registration.css';
+import { setAuthorisedActionCreator, setNewUserActionCreator } from "./UsersReducer";
+import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 
 
-function Registration(){
+function Registration(props){
+    
+    const navigate = useNavigate();
+    
+    const [email, setEmail] = useState("");
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordAgain, setPasswordAgain] = useState("");
+
+    // console.log(props);
+    const setNewUserMethod = (event, _email, _login, _password, _passwordAgain, props, _navigate) => {
+        if(_password === _passwordAgain){
+            Cookies.set('loggined', true)
+            _navigate('/');
+            props.setNewUser({Email: _email, Login: _login, Password: _password});
+            // axios.post('http://localhost:8080/newUser', {
+            //     user: props.state.Users.users[props.state.Users.users.length - 1]
+            // }).catch(function (err){
+            //     console.log(`Что-то пошло не так: ${err}}`);
+            // })
+            props.ChangeAuthorised(true);
+        }
+    }
 
     return(
         <div className="Registration">
-            <div className="main_registation_container">
-                <div className="left_side">
-                    <h1>проф<br/>ресурс</h1>
-                </div>
-                <div className="right_side">
-                    <form className="registrationForm">
-                        <h1>Регистрация</h1>
-                        <input type="text" placeholder="Эл. почта" />
-                        <input type="text" placeholder="Имя" />
-                        <input type="text" placeholder="Пароль" />
-                        <input type="text" placeholder="Повторите пароль" />
-                        <input id="sendSubmit" type="submit" value="Зарегистрироваться"/>
-                    </form>
-                </div>
-            </div>
+            <form className="regForm">
+                <h1>Зарегистрироваться</h1>
+                <input type="email" id="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}/>
+                <input type="text" id="login" placeholder="Логин" onChange={e => setLogin(e.target.value)} value={login}/>
+                <input type="text" id="password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} value={password}/>
+                <input type="text" id="password_again" placeholder="Повторите пароль" onChange={e => setPasswordAgain(e.target.value)} value={passwordAgain}/>
+                <button onClick={event => setNewUserMethod(event, email, login, password, passwordAgain, props, navigate)}>Отправить</button>
+            </form>
         </div>
     )
 }
 
-export default Registration
+function MapStateToProps(state){
+    return{
+        users: state.Users.users,
+        state: state
+    }
+}
+
+function MapDispatchToProps(dispatch){
+    return{
+        setNewUser: (payloadUser) => dispatch(setNewUserActionCreator(payloadUser)),
+        ChangeAuthorised: (value) => dispatch(setAuthorisedActionCreator(value))
+    }
+}
+
+
+export default connect(MapStateToProps, MapDispatchToProps)(Registration)

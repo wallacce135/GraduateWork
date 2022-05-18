@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Header.css';
 import searchImg from '../../assets/search-img.svg';
 import {Link} from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { connect } from "react-redux";
 
 
 function Header(props){
-    console.log(props);
+    
+    console.log(props.auth);
+
     return(
         <div className="header">
             <Link to="/" id="logo"><h1>проф<br/>ресурс</h1></Link>
@@ -15,14 +19,18 @@ function Header(props){
                 <input placeholder="найти"/>
             </div>
 
-            {props.authorized ? 
+            {!JSON.parse(props.auth) ? (
             <div className="navButtons">
                 <Link id="logBtn" to="/login">войти</Link>
-                <Link id="regBtn" to="/registration">регистрация </Link>
-            </div>
-            : <div></div>}
+                <Link id="regBtn" to="/registration">регистрация</Link>
+            </div>)
+            : <div></div>
+            }
         </div>
     )
 }
+
+
+
 
 export default Header

@@ -1,46 +1,34 @@
 import './App.css';
-import {Route, Routes} from 'react-router-dom'
-import Header from "./Components/Header/Header"
-import Navigation from './Components/Navigation/Navigation';
-import Article from './Components/Article/Article';
-import Footer from './Components/Footer/Footer';
-import New from './Components/New/New';
-import Views from './Components/Views/Views';
+import Cookies from 'js-cookie';
+import Main from './Components/Main';
 import Login from './Components/Login/Login';
 import Registration from './Components/Registration/Registration';
-import { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
+import { useNavigate, Route, Routes, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { setAuthorisedActionCreator } from "./Components/Registration/UsersReducer";
 
-function App() {
+function App(props) {
   
-  Cookies.set('loggined', true);
-  
-  const [authorized, setAuthorized] = useState(false);
-  
-  
-  useEffect(() => {
-    if(Cookies.get('loggined')){
-      setAuthorized(Cookies.get('loggined'));
-    }
-  }, [authorized])
-  
-  return (
-    <div className="App">
+  if(!Cookies.get('loggined')){
+    Cookies.set('loggined', false);
+    props.ChangeAuthorised(false);
+  }
+  else if(JSON.parse(Cookies.get('loggined')) === true){
+    props.ChangeAuthorised(true);
+  }
 
-      <Header authorized={authorized}/>
-      <Navigation />
-
-      <Routes>
-        <Route path='/' element={<Article />} />
-        <Route path='/new' element={<New />} />
-        <Route path='/views' element={<Views />} />
-        <Route path='/login'  element={<Login />} />
-        <Route path='/registration' element={<Registration />}/>
-      </Routes>
-
-      <Footer />
-    </div>
-  );
+  return(
+    <Main auth={props.authorized} />
+  )
 }
 
-export default App;
+function MapStateToProps(state){
+  return{
+      authorized: state.Users.authorized
+  }
+}
+
+const MapDispatchToProps = dispatch => ({ChangeAuthorised: (value) => dispatch(setAuthorisedActionCreator(value))})
+
+export default connect(MapStateToProps, MapDispatchToProps)(App);

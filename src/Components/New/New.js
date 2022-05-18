@@ -8,7 +8,7 @@ import axios from "axios";
 
 function addNew(payload){
     
-    console.log(payload);
+    // console.log(payload);
 
     // axios.post("http://localhost:8080/uploadNewArticle", {
         

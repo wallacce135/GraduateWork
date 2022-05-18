@@ -1,24 +1,60 @@
-import React, { useEffect } from "react";
-import './Login.css'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getUsersActionCreator } from "../Registration/UsersReducer";
+import { useNavigate } from "react-router-dom";
+import './Login.css';
 
-function Login(){
+
+function Login(props){
+
+    const navigate = useNavigate();
+
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+
+    const getUserData = (event, _login, _password, props) =>{
+        let arr = [];
+        axios.post('http://localhost:8080/login', {
+            login: _login,
+            password: _password
+        })
+        .then(data =>{
+            if(data.data.length > 0){
+                props.setUser(data.data);
+                console.log(props.state);
+            }
+        })
+        .catch(function (err){
+            console.log(err);
+        })
+        event.preventDefault();
+    }
+
     return(
         <div className="Login">
-            <div className="main_login_container">
-                <div className="left_side">
-                    <h1>проф<br/>ресурс</h1>
-                </div>
-                <div className="right_side">
-                    <form className="loginForm">
-                        <h1>Авторизация</h1>
-                        <input id="loginInput" type="text" placeholder="Эл. почта" />
-                        <input id="passwordInput" type="text" placeholder="Пароль" />
-                        <input id="sendSubmit" type="submit" value="Войти" />
-                    </form>
-                </div>
-            </div>
+            <form className="loginForm">
+                <h1>Войти</h1>
+                <input type="text" id="email" placeholder="Email" onChange={e => setLogin(e.target.value)} value={login} />
+                <input type="text" id="password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} value={password} />
+                <button onClick={event => getUserData(event, login, password, props)}>Отправить</button>
+            </form>
         </div>
     )
 }
 
-export default Login
+
+function MapStateToProps(state){
+    return{
+        users: state.Users.users,
+        state: state
+    }
+}
+
+function MapDispatchToProps(dispatch){
+    return{
+        setUser: (record) => dispatch(getUsersActionCreator(record))
+    }
+}
+
+export default connect(MapStateToProps, MapDispatchToProps)(Login)
