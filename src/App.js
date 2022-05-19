@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { setAuthorisedActionCreator } from "./Components/Registration/UsersReducer";
 
 function App(props) {
-  
   if(!Cookies.get('loggined')){
     Cookies.set('loggined', false);
     props.ChangeAuthorised(false);

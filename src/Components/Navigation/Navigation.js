@@ -2,12 +2,15 @@ import React from "react";
 import './Navigation.css'
 import {Link} from 'react-router-dom'
 
-function Navigation(){
+function Navigation(props){
+    console.log(props);
     return(
         <div className="navigation">
             <Link id="articles" to="/">статьи</Link>
-            <Link id="views" to="/views">обзоры</Link>
-            <Link id="newArticle" to="/New">написать статью</Link>
+            {JSON.parse(props.auth) ? (
+                <Link id="newArticle" to="/New">написать статью</Link>
+            ) : ""}
+            
         </div>
     )
 }

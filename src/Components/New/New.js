@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './New.css'
-import TextareaContainer from "./TextArea/TextareaContainer";
 import { connect } from 'react-redux';
 import { setNewArticleActionCreator } from "../Article/ArticleReducer";
 import axios from "axios";
@@ -23,12 +22,12 @@ function New(props){
     const [textValue, changeTextValue] = useState("");
     const [titleValue, changeTitleValue] = useState("");
 
-    // console.log(props)
+    console.log(props.state);
+
 
     return(
         <div className="New">
             <input id="title" placeholder="Заголовок" onChange={e => changeTitleValue(e.target.value)}/>
-            {/* <TextareaContainer id="container" handler={(e) => changeValue(e.target.value)} value={value}/> */}
             <textarea id="text" onChange={e => changeTextValue(e.target.value)}></textarea>
             <div className="buttons">
                 <button id="addImg">Установить картинку</button>

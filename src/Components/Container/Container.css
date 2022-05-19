@@ -10,6 +10,7 @@
     font-size: 20px;
     display: block;
     margin-top: 8px;
+    text-decoration: none;
 }
 
 
@@ -17,4 +18,14 @@
     border: 1px solid black;
     border-radius: 8px;
     padding: 24px;
+}
+
+.container a{
+    text-decoration: none;
+    color: black;
+    transition: linear 0.15s;
+}
+
+.container a:hover{
+    color: #F15025;
 }

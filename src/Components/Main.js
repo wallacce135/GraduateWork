@@ -1,29 +1,28 @@
 import React from "react";
 import {Route, Routes} from 'react-router-dom';
 import './Main.css';
-import Cookies from 'js-cookie';
 import Header from "./Header/Header"
 import Navigation from './Navigation/Navigation';
 import Article from './Article/Article';
 import Footer from './Footer/Footer';
 import New from './New/New';
-import Views from './Views/Views';
 import Login from './Login/Login';
 import Registration from './Registration/Registration';
+import ArticlePage from "./ArticlePage/ArticlePage";
 
 
 function Main(props){
     return(
         <div className="Main">
-            <Header auth={props.auth}/>
-            <Navigation />
+            <Header auth={props.auth} />
+            <Navigation auth={props.auth} />
 
             <Routes>
                 <Route path='/' element={<Article />} />
                 <Route path='/new' element={<New />} />
-                <Route path='/views' element={<Views />} />
                 <Route path='/login'  element={<Login />} />
-                <Route path='/registration' element={<Registration />}/>
+                <Route path='/registration' element={<Registration />} />
+                <Route exact path='/articles/:articleId' element={<ArticlePage/>} />
             </Routes>
 
             <Footer />

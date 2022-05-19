@@ -26,7 +26,6 @@ function Article(props){
     
     useEffect(() => getData(props.setArticles), [props.articles.length]);
     useEffect(()=> getTip(props.getTip), [props.tip.tip_id]);
-
     
     return(
         <div className="article">
@@ -34,7 +33,7 @@ function Article(props){
             <div className="grid-container">
 
                 {props.articles.map(art =>{ 
-                    return <Container key={art.article_id} title={art.article_title} />
+                    return <Container key={art.article_id} forprop_key={art.article_id} title={art.article_title} />
                 })}
 
                 <button className="showMoreBtn">Показать больше</button>

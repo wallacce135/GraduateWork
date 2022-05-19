@@ -16,19 +16,18 @@ function Registration(props){
     const [password, setPassword] = useState("");
     const [passwordAgain, setPasswordAgain] = useState("");
 
-    // console.log(props);
     const setNewUserMethod = (event, _email, _login, _password, _passwordAgain, props, _navigate) => {
         if(_password === _passwordAgain){
             Cookies.set('loggined', true)
-            _navigate('/');
             props.setNewUser({Email: _email, Login: _login, Password: _password});
-            // axios.post('http://localhost:8080/newUser', {
-            //     user: props.state.Users.users[props.state.Users.users.length - 1]
-            // }).catch(function (err){
-            //     console.log(`Что-то пошло не так: ${err}}`);
-            // })
+            axios.post('http://localhost:8080/newUser', {
+                user: props.state.Users.users[props.state.Users.users.length - 1]
+            }).catch(function (err){
+                console.log(`Что-то пошло не так: ${err}`);
+            })
             props.ChangeAuthorised(true);
         }
+        _navigate('/');
     }
 
     return(

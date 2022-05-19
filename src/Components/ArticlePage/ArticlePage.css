@@ -1,0 +1,17 @@
+.background{
+    margin-top: 25px;
+}
+
+.title, .mainText{
+    margin: auto;
+    width: 60%;
+}
+
+.mainText{
+    margin: 25px auto;
+}
+.mainText p{
+    font-family: 'Gilroy';
+    font-size: 20px;
+    line-height: 25px;
+}

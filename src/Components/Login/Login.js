@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { getUsersActionCreator } from "../Registration/UsersReducer";
+import { getUsersActionCreator, setAuthorisedActionCreator } from "../Registration/UsersReducer";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 import './Login.css';
 
 
@@ -22,13 +23,14 @@ function Login(props){
         .then(data =>{
             if(data.data.length > 0){
                 props.setUser(data.data);
-                console.log(props.state);
+                Cookies.set('loggined', true);
+                props.ChangeAuthorised(true);
             }
         })
         .catch(function (err){
             console.log(err);
         })
-        event.preventDefault();
+        navigate('/');
     }
 
     return(
@@ -53,7 +55,8 @@ function MapStateToProps(state){
 
 function MapDispatchToProps(dispatch){
     return{
-        setUser: (record) => dispatch(getUsersActionCreator(record))
+        setUser: (record) => dispatch(getUsersActionCreator(record)),
+        ChangeAuthorised: (value) => dispatch(setAuthorisedActionCreator(value))
     }
 }
 
