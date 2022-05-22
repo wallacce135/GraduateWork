@@ -17,6 +17,10 @@ function App(props) {
     props.ChangeAuthorised(true);
   }
 
+  if(!Cookies.get('user_id')){
+    Cookies.set('user_id', null);
+  }
+
   return(
     <Main auth={props.authorized} />
   )

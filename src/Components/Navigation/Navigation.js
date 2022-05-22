@@ -3,7 +3,6 @@ import './Navigation.css'
 import {Link} from 'react-router-dom'
 
 function Navigation(props){
-    console.log(props);
     return(
         <div className="navigation">
             <Link id="articles" to="/">статьи</Link>

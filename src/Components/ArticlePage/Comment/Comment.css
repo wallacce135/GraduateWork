@@ -1,0 +1,32 @@
+.Comment{
+    height: auto;
+    background: #f0f0f0;
+    margin: 6px 0 6px 0;
+    padding: 16px 8px 16px 8px;
+}
+
+.CommentTitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.CommentTitle h2{
+    border-bottom: 2px solid black;
+    font-family: 'Gilroy';
+    font-size: 28px;
+}
+
+.Comment .userImg{
+    margin: 16px 24px 16px 16px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.CommentText p{
+    margin: 8px 0px 0 16px;
+    font-family: 'Gilroy';
+    font-size: 20px;
+}

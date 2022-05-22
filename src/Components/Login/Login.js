@@ -23,6 +23,7 @@ function Login(props){
         .then(data =>{
             if(data.data.length > 0){
                 props.setUser(data.data);
+                Cookies.set('user_id', data.data[0].user_id);
                 Cookies.set('loggined', true);
                 props.ChangeAuthorised(true);
             }
@@ -37,7 +38,7 @@ function Login(props){
         <div className="Login">
             <form className="loginForm">
                 <h1>Войти</h1>
-                <input type="text" id="email" placeholder="Email" onChange={e => setLogin(e.target.value)} value={login} />
+                <input type="text" id="email" placeholder="Логин" onChange={e => setLogin(e.target.value)} value={login} />
                 <input type="text" id="password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} value={password} />
                 <button onClick={event => getUserData(event, login, password, props)}>Отправить</button>
             </form>

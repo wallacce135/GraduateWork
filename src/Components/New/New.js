@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import './New.css'
 import { connect } from 'react-redux';
 import { setNewArticleActionCreator } from "../Article/ArticleReducer";
+import Cookies from 'js-cookie';
 import axios from "axios";
+import './New.css'
 
 
-function addNew(payload){
+function addNew(_payload, props){
     
-    // console.log(payload);
+    props.AddNewArticle(_payload);
 
-    // axios.post("http://localhost:8080/uploadNewArticle", {
-        
-    // })
+    console.log(props);
+
+    axios.post("http://localhost:8080/uploadNewArticle", {
+         payload: props.state.Articles.articles[props.state.Articles.articles.length - 1]
+    })
     
 }
 
@@ -31,9 +34,10 @@ function New(props){
             <textarea id="text" onChange={e => changeTextValue(e.target.value)}></textarea>
             <div className="buttons">
                 <button id="addImg">Установить картинку</button>
-                <button id="Publish" onClick={() => (props.AddNewArticle({payload: {artTitle: titleValue, artText: textValue}}))}>Опубликовать</button>
+                <button id="Publish" onClick={() => (addNew({payload: {artTitle: titleValue, artText: textValue, user_id: Cookies.get('user_id')}}, props))}>Опубликовать</button>
             </div>
         </div>
+
     )
 }
 

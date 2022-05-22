@@ -23,7 +23,6 @@ const getTip = (getTip) =>{
 
 function Article(props){
     
-    
     useEffect(() => getData(props.setArticles), [props.articles.length]);
     useEffect(()=> getTip(props.getTip), [props.tip.tip_id]);
     

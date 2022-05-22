@@ -18,7 +18,6 @@ function Registration(props){
 
     const setNewUserMethod = (event, _email, _login, _password, _passwordAgain, props, _navigate) => {
         if(_password === _passwordAgain){
-            Cookies.set('loggined', true)
             props.setNewUser({Email: _email, Login: _login, Password: _password});
             axios.post('http://localhost:8080/newUser', {
                 user: props.state.Users.users[props.state.Users.users.length - 1]
@@ -27,7 +26,7 @@ function Registration(props){
             })
             props.ChangeAuthorised(true);
         }
-        _navigate('/');
+        _navigate('/login');
     }
 
     return(
