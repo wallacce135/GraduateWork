@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import './Registration.css';
 import { setAuthorisedActionCreator, setNewUserActionCreator } from "./UsersReducer";
-import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
 
 
@@ -16,7 +15,7 @@ function Registration(props){
     const [password, setPassword] = useState("");
     const [passwordAgain, setPasswordAgain] = useState("");
 
-    const setNewUserMethod = (event, _email, _login, _password, _passwordAgain, props, _navigate) => {
+    const setNewUserMethod = (_email, _login, _password, _passwordAgain, props, _navigate) => {
         if(_password === _passwordAgain){
             props.setNewUser({Email: _email, Login: _login, Password: _password});
             axios.post('http://localhost:8080/newUser', {
@@ -24,7 +23,6 @@ function Registration(props){
             }).catch(function (err){
                 console.log(`Что-то пошло не так: ${err}`);
             })
-            props.ChangeAuthorised(true);
         }
         _navigate('/login');
     }
@@ -37,7 +35,7 @@ function Registration(props){
                 <input type="text" id="login" placeholder="Логин" onChange={e => setLogin(e.target.value)} value={login}/>
                 <input type="text" id="password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} value={password}/>
                 <input type="text" id="password_again" placeholder="Повторите пароль" onChange={e => setPasswordAgain(e.target.value)} value={passwordAgain}/>
-                <button onClick={event => setNewUserMethod(event, email, login, password, passwordAgain, props, navigate)}>Отправить</button>
+                <button onClick={event => setNewUserMethod(email, login, password, passwordAgain, props, navigate)}>Отправить</button>
             </form>
         </div>
     )

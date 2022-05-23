@@ -14,8 +14,7 @@ function Login(props){
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
-    const getUserData = (event, _login, _password, props) =>{
-        let arr = [];
+    const getUserData = (_login, _password, props) =>{
         axios.post('http://localhost:8080/login', {
             login: _login,
             password: _password
@@ -23,10 +22,12 @@ function Login(props){
         .then(data =>{
             if(data.data.length > 0){
                 props.setUser(data.data);
+                Cookies.set('login', _login);
                 Cookies.set('user_id', data.data[0].user_id);
                 Cookies.set('loggined', true);
                 props.ChangeAuthorised(true);
             }
+            //Сделать pop-up
         })
         .catch(function (err){
             console.log(err);
@@ -40,7 +41,7 @@ function Login(props){
                 <h1>Войти</h1>
                 <input type="text" id="email" placeholder="Логин" onChange={e => setLogin(e.target.value)} value={login} />
                 <input type="text" id="password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} value={password} />
-                <button onClick={event => getUserData(event, login, password, props)}>Отправить</button>
+                <button onClick={event => getUserData(login, password, props)}>Отправить</button>
             </form>
         </div>
     )

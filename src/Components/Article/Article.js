@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React from "react"; 
 import './Article.css'
 import Container from "../Container/Container";
 import Tip from "../Tip/Tip";
@@ -8,23 +8,23 @@ import { setArticleActionCreator, getTipActionCreator } from "./ArticleReducer";
 import { useEffect } from "react";
 
 
-const getData = (setArticles) =>{
-
-    axios.get('http://localhost:8080').then(res =>{
-        setArticles(res.data);
-    })
-}
-
-const getTip = (getTip) =>{
-    axios.get('http://localhost:8080/tips').then(res =>{
-        getTip(res.data[0]);
-    })
-}
-
 function Article(props){
-    
-    useEffect(() => getData(props.setArticles), [props.articles.length]);
-    useEffect(()=> getTip(props.getTip), [props.tip.tip_id]);
+
+    const getData = () =>{
+
+        axios.get('http://localhost:8080').then(res =>{
+            props.setArticles(res.data);
+        })
+    }
+
+    const getTip = () =>{
+        axios.get('http://localhost:8080/tips').then(res =>{
+            props.getTip(res.data[0]);
+        })
+    }
+
+    useEffect(() => getData(), [props.articles.length]);
+    useEffect(() => getTip(), [props.tip.tip_id]);
     
     return(
         <div className="article">

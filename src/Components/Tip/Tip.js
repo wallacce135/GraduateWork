@@ -2,6 +2,7 @@ import React from "react";
 import './Tip.css'
 import idea from '../../assets/idea.svg';
 
+
 function Tip(props){
     return(
         <div className="tip">

@@ -15,13 +15,6 @@
     line-height: 28px;
     grid-area: logo;
 }
-/* .header > div{
-    display: flex;
-    align-items: center;
-}
-.header > div*{
-    align-self: center;
-} */
 .search{
     width: 180px;
     padding: 8px;
@@ -53,7 +46,6 @@
     grid-area: btns;
     align-items: center;
     text-align: right;
-    /* height: 41px; */
 }
 
 .navButtons a{
@@ -74,4 +66,17 @@
 }
 #logo{
     text-decoration: none;
+}
+
+.exitBtn{
+    text-decoration: none;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    color: black;
+    width: 15vh;
+    background-color: #F9BEAE;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }

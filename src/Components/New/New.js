@@ -20,13 +20,8 @@ function addNew(_payload, props){
 
 function New(props){
 
-    const [value, changeValue] = useState("");
-
     const [textValue, changeTextValue] = useState("");
     const [titleValue, changeTitleValue] = useState("");
-
-    console.log(props.state);
-
 
     return(
         <div className="New">

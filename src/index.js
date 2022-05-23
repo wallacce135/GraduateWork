@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './App(Redux)/store';
-
 import { BrowserRouter } from 'react-router-dom';
-import { Cookies, CookiesProvider } from 'react-cookie';
+import { CookiesProvider } from 'react-cookie';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
