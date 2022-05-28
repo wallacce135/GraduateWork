@@ -1,7 +1,7 @@
 import React from "react";
 import './Header.css';
 import searchImg from '../../assets/search-img.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from "react-redux";
 import { setAuthorisedActionCreator } from "../Registration/UsersReducer";
 import Cookies from 'js-cookie';
@@ -9,11 +9,15 @@ import Cookies from 'js-cookie';
 
 function Header(props){
 
+    const navigate = useNavigate();
+
     const Exit = (props) =>{
         Cookies.set('loggined', false);
         Cookies.set('user_id', null);
         Cookies.set('login', null);
         props.ChangeAuthorized(false);
+        navigate("/");
+        
     }
 
     return(

@@ -18,6 +18,10 @@ function addNew(_payload, props){
     
 }
 
+function addImage(event){
+    
+}
+
 function New(props){
 
     const [textValue, changeTextValue] = useState("");
@@ -28,7 +32,7 @@ function New(props){
             <input id="title" placeholder="Заголовок" onChange={e => changeTitleValue(e.target.value)}/>
             <textarea id="text" onChange={e => changeTextValue(e.target.value)}></textarea>
             <div className="buttons">
-                <button id="addImg">Установить картинку</button>
+                <input type="file" id="addImg" onClick={e => addImage(e.target.value)} placeholder="Добавить картинку" />
                 <button id="Publish" onClick={() => (addNew({payload: {artTitle: titleValue, artText: textValue, user_id: Cookies.get('user_id')}}, props))}>Опубликовать</button>
             </div>
         </div>

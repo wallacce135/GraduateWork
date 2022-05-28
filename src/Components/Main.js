@@ -9,6 +9,7 @@ import New from './New/New';
 import Login from './Login/Login';
 import Registration from './Registration/Registration';
 import ArticlePage from "./ArticlePage/ArticlePage";
+import Profile from "./Profile/Profile";
 
 
 function Main(props){
@@ -23,6 +24,7 @@ function Main(props){
                 <Route path='/login'  element={<Login />} />
                 <Route path='/registration' element={<Registration />} />
                 <Route exact path='/articles/:articleId' element={<ArticlePage/>} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
 
             <Footer />

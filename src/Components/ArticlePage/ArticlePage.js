@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import background from '../../assets/background.png';
+import background from '../../assets/background3.png';
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentCommentsActionCreator, setArticleActionCreator, setCurrentArtcileActionCreator, setNewCommentActionCreator } from "../Article/ArticleReducer";
@@ -15,7 +15,7 @@ const FindArticle = (props, params) =>{
     })
     .then(art =>{
         if(art.data.length > 0){
-            props.setCurrentArtcile(art.data);
+            props.setCurrentArticle(art.data);
         }
     })
 
@@ -30,7 +30,6 @@ const FindComments = (props, params) =>{
     }).then(res =>{
         props.getComments(res.data);
     });
-    console.log(1);
 }
 
 function PostComment(event, comment, props, params)
@@ -96,7 +95,7 @@ function MapDispatchToProps(dispatch){
     return{
         setNewComment: (payload) => dispatch(setNewCommentActionCreator(payload)),
         setArticles: (record) => dispatch(setArticleActionCreator(record)),
-        setCurrentArtcile: (record) => dispatch(setCurrentArtcileActionCreator(record)),
+        setCurrentArticle: (record) => dispatch(setCurrentArtcileActionCreator(record)),
         getComments: (comments) => dispatch(getCurrentCommentsActionCreator(comments))
     }
 }

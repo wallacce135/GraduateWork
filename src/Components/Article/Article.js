@@ -5,6 +5,7 @@ import Tip from "../Tip/Tip";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setArticleActionCreator, getTipActionCreator } from "./ArticleReducer";
+
 import { useEffect } from "react";
 
 
@@ -36,9 +37,7 @@ function Article(props){
                 })}
 
                 <button className="showMoreBtn">Показать больше</button>
-
             </div>
-            
             <Tip title={props.tip.tip_title || "Здесь будет заголовок подсказки"} text={props.tip.tip_text}/>
         </div>
     )

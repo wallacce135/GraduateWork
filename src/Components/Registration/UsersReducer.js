@@ -2,7 +2,7 @@ import { actionTypes } from "../../App(Redux)/actionTypes";
 
 
 const init = {
-    currentUser: {},
+    currentUser: {user_id: null},
     users: [],
     authorized: false
 }
