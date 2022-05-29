@@ -8,6 +8,8 @@ export const actionTypes = {
     SET_CURRENT_ARTICLE: 'set_current_article',
     GET_COMMENTS: 'get_comments_for_current_article',
     NEW_COMMENT: 'new_comment',
+    ADD_ARTICLES: 'add_articles',
+    CHANGE_PAGE: 'change_page',
     
     //Users
     NEW_USER: 'new_user',

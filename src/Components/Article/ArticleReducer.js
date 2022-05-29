@@ -2,6 +2,7 @@ import { actionTypes } from '../../App(Redux)/actionTypes';
 
 
 const init = {
+    page: 0,
     currentComments: [],
     currentArticle: [],
     articles: [],
@@ -24,6 +25,10 @@ export function ArticleReducer(state = init, action){
             return {...state, currentComments: [...action.comments]}
         case actionTypes.NEW_COMMENT:
             return {...state, ...state.currentComments.push(action.payload)}
+        case actionTypes.ADD_ARTICLES:
+            return {...state, articles: [...state.articles.concat(action.record)]}
+        case actionTypes.CHANGE_PAGE:
+            return {...state, page: action.value}
         default:
             return state
     }
@@ -35,3 +40,5 @@ export const setNewArticleActionCreator = payload => ({type: actionTypes.NEW_ART
 export const setCurrentArtcileActionCreator = record => ({type: actionTypes.SET_CURRENT_ARTICLE, record});
 export const getCurrentCommentsActionCreator = comments =>({type: actionTypes.GET_COMMENTS, comments});
 export const setNewCommentActionCreator = payload =>({type: actionTypes.NEW_COMMENT, payload});
+export const changePageActionCreator = value => ({type: actionTypes.CHANGE_PAGE, value});
+export const addArticlesActionCreator = record => ({type: actionTypes.ADD_ARTICLES, record});

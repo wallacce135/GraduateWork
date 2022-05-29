@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import './Header.css';
 import searchImg from '../../assets/search-img.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { connect } from "react-redux";
 import { setAuthorisedActionCreator } from "../Registration/UsersReducer";
 import Cookies from 'js-cookie';
+import { setArticleActionCreator } from "../Article/ArticleReducer";
+import axios from "axios";
 
 
 function Header(props){
@@ -20,13 +22,28 @@ function Header(props){
         
     }
 
+    function SetFilter(value){
+        SetSearchText(value);
+        if(!value.length){
+            axios.get('http://localhost:8080').then(res =>{
+            props.SetArticles(res.data);
+            })
+        }
+        let newArr = props.articles.filter(el =>{
+            if(el.article_title.toLowerCase().includes(value.toLowerCase())) return true 
+        })
+        props.SetArticles(newArr);
+    }
+    
+    const [searchText, SetSearchText] = useState();
+    
     return(
         <div className="header">
             <Link to="/" id="logo"><h1>проф<br/>ресурс</h1></Link>
 
             <div className="search">
                 <img src={searchImg} alt="not found"/>
-                <input placeholder="найти"/>
+                <input type="text" id="filter" onChange={e => SetFilter(e.target.value)} placeholder="найти" value={searchText} />
             </div>
 
             {!JSON.parse(props.auth) ? (
@@ -43,15 +60,15 @@ function Header(props){
 
 function MapStateToProps(state){
     return{
-        
+        articles: state.Articles.articles,
     }
 }
 
 function MapDispatchToProps(dispatch){
     return{
-        ChangeAuthorized: (value) => dispatch(setAuthorisedActionCreator(value))
+        ChangeAuthorized: (value) => dispatch(setAuthorisedActionCreator(value)),
+        SetArticles: (record) => dispatch(setArticleActionCreator(record))
     }
 }
-
 
 export default connect(MapStateToProps, MapDispatchToProps)(Header)
